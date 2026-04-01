@@ -1,0 +1,7 @@
+#to remove the duplicates in a list
+num=[3,4,6,1,7,8,4,7,4,]
+uniques=[]
+for number in num:
+    if number not in uniques:
+        uniques.append(number)
+print(uniques)
