@@ -1,0 +1,39 @@
+class Solution(object):
+    def maximumWealth(self, accounts):
+        wealth = 0
+
+        for row in accounts:
+            wealth = max(wealth, sum(row))
+
+        return wealth
+
+#ImportError: cannot import name gcd
+    from math import gcd
+Line 7 in <module> (Solution.py#
+class Solution(object):
+
+    def gcd(self, a, b):
+        while b:
+            a, b = b, a % b
+        return a
+
+    def gcdSum(self, nums):
+        prefix = []
+
+        mx = 0
+        for x in nums:
+            mx = max(mx, x)
+            prefix.append(self.gcd(x, mx))
+
+        prefix.sort()
+
+        left = 0
+        right = len(prefix) - 1
+        ans = 0
+
+        while left < right:
+            ans += self.gcd(prefix[left], prefix[right])
+            left += 1
+            right -= 1
+
+        return ans
